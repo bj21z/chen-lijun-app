@@ -290,3 +290,58 @@ function openGallery(index){
   document.querySelector('#galleryNext').addEventListener('click',()=>openGallery((index+1)%remoteGallery.length));
 }
 renderRemoteGallery();
+
+
+// ===== 中国主流平台互动观察 1.2.0 =====
+const socialFallback = {"updatedAt": "2026-08-05 20:00", "version": "1.2.0", "actor": "陈丽君", "platforms": [{"name": "微博", "title": "超话与舞台话题", "desc": "角色讨论、舞台动态与粉丝互动内容更新密集。", "url": "https://s.weibo.com/weibo?q=%23%E9%99%88%E4%B8%BD%E5%90%9B%23", "type": "话题"}, {"name": "抖音", "title": "短视频与直播切片", "desc": "适合发现唱段、身段、直播片段与戏迷二创。", "url": "https://www.douyin.com/search/%E9%99%88%E4%B8%BD%E5%90%9B", "type": "视频"}, {"name": "今日头条", "title": "媒体报道与用户讨论", "desc": "聚合人物报道、演出资讯及评论区观点。", "url": "https://so.toutiao.com/search?keyword=%E9%99%88%E4%B8%BD%E5%90%9B", "type": "资讯"}, {"name": "百度", "title": "全网热点检索", "desc": "快速查看近期报道、百科资料与平台聚合结果。", "url": "https://www.baidu.com/s?wd=%E9%99%88%E4%B8%BD%E5%90%9B", "type": "综合"}, {"name": "百度贴吧", "title": "长帖与戏迷交流", "desc": "适合浏览长篇观后感、作品讨论和资料整理。", "url": "https://tieba.baidu.com/f/search/res?ie=utf-8&qw=%E9%99%88%E4%B8%BD%E5%90%9B", "type": "论坛"}, {"name": "哔哩哔哩", "title": "长视频与唱段合集", "desc": "适合观看舞台混剪、尹派赏析和越剧科普。", "url": "https://search.bilibili.com/all?keyword=%E9%99%88%E4%B8%BD%E5%90%9B", "type": "视频"}], "signals": [{"title": "《我的大观园》舞台回声", "desc": "围绕贾宝玉塑造、唱腔表达、舞美与巡演反馈的集中讨论。", "tag": "演出讨论", "platforms": ["微博", "抖音", "今日头条"]}, {"title": "贾廷角色与出圈片段", "desc": "环境式越剧互动、人物气场与经典片段仍是高频内容。", "tag": "角色热点", "platforms": ["微博", "抖音", "哔哩哔哩"]}, {"title": "尹派小生身段赏析", "desc": "从扇子功、眼神、台步和唱腔切入的专业向内容。", "tag": "艺术赏析", "platforms": ["哔哩哔哩", "百度贴吧", "微博"]}, {"title": "演出信息与票务提醒", "desc": "围绕公开演出日程、场馆信息和观演提示的实用讨论。", "tag": "实用信息", "platforms": ["今日头条", "百度", "微博"]}], "methodNote": "讨论方向由公开页面人工核验后整理；不抓取私人评论，不展示无法核验的实时排名。"};
+let socialPayload = socialFallback;
+let socialFilterValue = '全部';
+
+function platformInitial(name) { return String(name || '平').slice(0, 1); }
+function renderSocialHub() {
+  const platforms = Array.isArray(socialPayload.platforms) ? socialPayload.platforms : [];
+  const signals = Array.isArray(socialPayload.signals) ? socialPayload.signals : [];
+  const filterNames = ['全部', ...new Set(platforms.map(x => x.name))];
+  const filter = document.querySelector('#socialFilter');
+  if (!filter) return;
+  filter.innerHTML = filterNames.map(name => `<button type="button" class="${name === socialFilterValue ? 'active' : ''}" data-social-filter="${escapeHTML(name)}">${escapeHTML(name)}</button>`).join('');
+  filter.querySelectorAll('[data-social-filter]').forEach(btn => btn.addEventListener('click', () => {
+    socialFilterValue = btn.dataset.socialFilter;
+    renderSocialHub();
+  }));
+  const visibleSignals = socialFilterValue === '全部' ? signals : signals.filter(x => (x.platforms || []).includes(socialFilterValue));
+  document.querySelector('#socialSignals').innerHTML = visibleSignals.map((item, index) => `
+    <article class="signal-card">
+      <div class="signal-top"><span>${escapeHTML(item.tag || '互动观察')}</span><button type="button" class="signal-save" data-signal-save="${index}" aria-label="收藏该讨论方向">${localStorage.getItem('陈丽君-signal-' + item.title) === '1' ? '♥' : '♡'}</button></div>
+      <h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.desc)}</p>
+      <div class="signal-platforms">${(item.platforms || []).map(p => `<i>${escapeHTML(p)}</i>`).join('')}</div>
+    </article>`).join('') || '<div class="empty-state">该平台暂无独立观察卡，可直接进入平台查看。</div>';
+  document.querySelectorAll('[data-signal-save]').forEach(btn => btn.addEventListener('click', () => {
+    const item = visibleSignals[Number(btn.dataset.signalSave)]; if (!item) return;
+    const key = '陈丽君-signal-' + item.title; const on = localStorage.getItem(key) !== '1';
+    localStorage.setItem(key, on ? '1' : '0'); btn.textContent = on ? '♥' : '♡'; showToast(on ? '已收藏讨论方向' : '已取消收藏');
+  }));
+  const visiblePlatforms = socialFilterValue === '全部' ? platforms : platforms.filter(x => x.name === socialFilterValue);
+  document.querySelector('#platformGrid').innerHTML = visiblePlatforms.map(item => `
+    <a class="platform-card" href="${safeExternalUrl(item.url)}" target="_blank" rel="noopener noreferrer">
+      <span class="platform-logo">${escapeHTML(platformInitial(item.name))}</span><div><b>${escapeHTML(item.name)}</b><em>${escapeHTML(item.type)}</em><p>${escapeHTML(item.desc)}</p></div><strong>打开 ↗</strong>
+    </a>`).join('');
+  document.querySelector('#socialStatus').innerHTML = `观察资料更新至 <b>${escapeHTML(socialPayload.updatedAt || '待核验')}</b> · 不显示虚构热度数值`;
+}
+
+async function loadSocialHub(announce = false) {
+  const btn = document.querySelector('#socialRefreshBtn'); if (btn) btn.disabled = true;
+  try {
+    const response = await fetch(`./data/social.json?v=${Date.now()}`, {cache:'no-store', headers:{Accept:'application/json'}});
+    if (!response.ok) throw new Error('social data unavailable');
+    const data = await response.json();
+    if (!Array.isArray(data.platforms) || !Array.isArray(data.signals)) throw new Error('invalid social data');
+    socialPayload = data; localStorage.setItem('陈丽君-social-cache', JSON.stringify(data)); renderSocialHub();
+    if (announce) showToast('互动观察资料已刷新');
+  } catch (error) {
+    try { const cached = JSON.parse(localStorage.getItem('陈丽君-social-cache') || 'null'); if (cached?.platforms) socialPayload = cached; } catch {}
+    renderSocialHub(); if (announce) showToast('网络不可用，已显示本机观察资料');
+  } finally { if (btn) btn.disabled = false; }
+}
+document.querySelector('#socialRefreshBtn')?.addEventListener('click', () => loadSocialHub(true));
+renderSocialHub(); loadSocialHub(false);
