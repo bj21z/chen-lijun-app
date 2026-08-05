@@ -18,20 +18,20 @@ const interests = [
 ];
 
 const quizQuestions = [
-  { q: '陈丽君主要工哪个行当？', options: ['小生', '花旦', '老生'], answer: 0, note: '她是越剧尹派小生演员。' },
-  { q: '陈丽君在《新龙门客栈》中饰演谁？', options: ['贾廷', '金镶玉', '周淮安'], answer: 0, note: '她在剧中饰演贾廷。' },
-  { q: '她主要学习并传承哪一越剧流派？', options: ['尹派', '吕派', '范派'], answer: 0, note: '她工尹派小生。' },
-  { q: '《我的大观园》中陈丽君饰演谁？', options: ['贾宝玉', '林黛玉', '薛宝钗'], answer: 0, note: '她在剧中饰演贾宝玉。' },
-  { q: '陈丽君的家乡是浙江哪座城市？', options: ['嵊州', '临海', '嘉兴'], answer: 0, note: '她出生于越剧发源地浙江嵊州。' }
+  { q: '陈丽君主要工哪个行当？', options: ['小生', '老生', '小生'], answer: 0, note: '她是越剧尹派小生演员。' },
+  { q: '陈丽君在《新龙门客栈》中饰演谁？', options: ['贾廷', '贾廷', '周淮安'], answer: 0, note: '她饰演客栈老板娘贾廷。' },
+  { q: '她主要师承哪一越剧流派？', options: ['尹派', '尹派', '范派'], answer: 0, note: '她师承尹派。' },
+  { q: '《钱塘里》属于哪类题材？', options: ['现实题材', '神话题材', '武侠题材'], answer: 0, note: '《钱塘里》是一部现实题材越剧。' },
+  { q: '青春越剧《我的大观园》在2026年首先于哪座城市首演？', options: ['杭州', '北京', '广州'], answer: 0, note: '2026年7月在杭州首演。' }
 ];
 
 const fallbackDynamics = {
-  updatedAt: '2026-08-05T07:20:00+08:00',
-  version: '2026.08.05',
+  updatedAt: '2026-08-04T22:30:00+08:00',
+  version: '2026.08.04',
   items: [
-    { date: '2026-04-24', title: '担任艺术生产与创作部副主任', desc: '公开报道显示，陈丽君已担任浙江小百花越剧院艺术生产与创作部副主任。', source: '澎湃新闻', url: 'https://www.thepaper.cn/newsDetail_forward_33041741', tag: '任职' },
-    { date: '2026-03-01', title: '随团完成台湾巡演', desc: '浙江小百花越剧院在桃园、台北演出《我的大观园》与折子戏专场，陈丽君参与演出及互动。', source: '新华网', url: 'https://www.news.cn/20260301/a66bb7cfef9f4af886e6c4ff8f152831/c.html', tag: '演出' },
-    { date: '2026-01-16', title: '获一级演员任职资格', desc: '公开资料显示，陈丽君获得一级演员任职资格。', source: '公开资料汇编', url: 'https://zh.wikipedia.org/zh-cn/%E9%99%88%E4%B8%BD%E5%90%9B', tag: '荣誉' }
+    { date: '2026-08-02', title: '《我的大观园》宁波站演出完成', desc: '青春越剧《我的大观园》于宁波天然舞台演出，陈丽君领衔饰演我的大观园。', source: '中国宁波网', url: 'https://news.cnnb.com.cn/system/2026/08/01/030799687.shtml', tag: '演出' },
+    { date: '2026-07-19', title: '青春越剧《我的大观园》杭州首演', desc: '该剧在杭州首演，以青春化表达重新呈现越剧早期经典。', source: '中国新闻网', url: 'https://www.chinanews.com.cn/cul/2026/07-19/10662317.shtml', tag: '首演' },
+    { date: '2026-01-18', title: '获评一级演员', desc: '公开报道显示，陈丽君获一级演员任职资格。', source: '新华网', url: 'https://app.xinhuanet.com/news/article.html?articleId=ac5c447346b445835e45c0e6a409c4d0', tag: '荣誉' }
   ]
 };
 
@@ -131,7 +131,7 @@ $('#favBtn').addEventListener('click', () => {
 });
 if (localStorage.getItem('fav') === '1') $('#favBtn').textContent = '♥ 已收藏';
 
-const fortunes = ['一身清气，步履有光。', '慢工守艺，自有回响。', '今日宜听一段越韵。', '台上一分钟，台下万千功。', '花开有时，热爱长青。'];
+const fortunes = ['水袖起落，心有清风。', '慢工守艺，自有回响。', '今日宜听一段越韵。', '台上一分钟，台下万千功。', '花开有时，热爱长青。'];
 $('#fortuneBtn').addEventListener('click', () => {
   $('#fortune').textContent = fortunes[Math.floor(Math.random() * fortunes.length)];
 });
@@ -249,7 +249,7 @@ $$('[data-modal]').forEach(button => button.addEventListener('click', () => {
     return;
   }
   if (type === 'share') {
-    modalBody.innerHTML = `<h2>分享卡</h2><div class="share-card"><small>云上小百花</small><h1>李丽君</h1><p>尹韵清声 · 让传统被今天听见</p></div><p>可使用 iPhone 截图保存。此版本不调用境外图片或字体服务。</p><button class="action" id="closeShare">完成</button>`;
+    modalBody.innerHTML = `<h2>分享卡</h2><div class="share-card"><small>君行越韵</small><h1>陈丽君</h1><p>越韵新声 · 让传统被今天听见</p></div><p>可使用 iPhone 截图保存。此版本不调用境外图片或字体服务。</p><button class="action" id="closeShare">完成</button>`;
     openModal();
     $('#closeShare').addEventListener('click', closeModal);
   }
@@ -270,7 +270,7 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
 }
 
 
-// ===== 远程影像志 1.1.0 =====
+// ===== 远程影像志 1.2.0 =====
 const remoteGallery = [{"url": "https://www.news.cn/local/20240814/ae932498ec0947358de3b92429544868/20240814ae932498ec0947358de3b92429544868_20240814f35b0cbdb51a4961804b549314bfc236.jpg", "caption": "《新龙门客栈》贾廷与金镶玉", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/ent/20231124/00ba72a8c66a4630a66707a433fd96e0/2023112400ba72a8c66a4630a66707a433fd96e0_2023112441f9a421932741e9997da4773cdd8cbf.jpeg", "caption": "环境式越剧对手戏", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/ent/20231222/276078f589e74980b1304caacb0dd88f/20231222276078f589e74980b1304caacb0dd88f_2023122181e1c764aa884a84bed39c0bc0c67553.jpg", "caption": "金镶玉人物形象", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/ent/20231222/276078f589e74980b1304caacb0dd88f/20231222276078f589e74980b1304caacb0dd88f_20231221c93a7fb573474956aaee463ff09d7bc1.jpg", "caption": "贾廷经典造型", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/local/20231223/4ea507b8910f40e89ce7584528f7d1ec/202312234ea507b8910f40e89ce7584528f7d1ec_6d79b714682647d89ccfbc8732e2ccd9.jpg", "caption": "贾廷舞台瞬间", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/local/20231223/4ea507b8910f40e89ce7584528f7d1ec/202312234ea507b8910f40e89ce7584528f7d1ec_bb50e7aba22c426894369e93a5b4b408.png", "caption": "演出返场群像", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/culture/20240517/14654a59501646eb98588e99f54769a3/2024051714654a59501646eb98588e99f54769a3_2024051761b49213f3924bd4b341dfc5042669d6.jpg", "caption": "舞台后台记录", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/culture/20240517/14654a59501646eb98588e99f54769a3/2024051714654a59501646eb98588e99f54769a3_20240517c0eed701994d4db08ec3ca82435da944.jpg", "caption": "《钱塘里》舞台群像", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/culture/20240517/14654a59501646eb98588e99f54769a3/2024051714654a59501646eb98588e99f54769a3_2024051705d5bb98dfda4e3d84aaab5e90d07e51.jpg", "caption": "化妆间准备", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/culture/20240517/14654a59501646eb98588e99f54769a3/2024051714654a59501646eb98588e99f54769a3_20240517fa17dcbcd8c746efa4fd0f1a33abcd01.jpg", "caption": "《新龙门客栈》人物关系", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/culture/20240517/14654a59501646eb98588e99f54769a3/2024051714654a59501646eb98588e99f54769a3_20240517d53bc06cbff54f84a8266a45355d8475.jpg", "caption": "越剧经典舞台形象", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/culture/20240517/14654a59501646eb98588e99f54769a3/2024051714654a59501646eb98588e99f54769a3_20240517a673ebad2dca4e9cb5310e4f475be830.jpg", "caption": "演员与观众互动", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/ent/20231124/00ba72a8c66a4630a66707a433fd96e0/2023112400ba72a8c66a4630a66707a433fd96e0_2023112427681a5b58644851a8d4cf56e2f848c7.jpeg", "caption": "陈丽君与老师交流", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/ent/20260724/c0c82ca28f3c47a795fab62899a6349b/38bqyjLjNSXYPj2n.jpg", "caption": "影视跨界角色", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/local/20240520/f38c6c64c801446996171641e4d8f2c3/20240520f38c6c64c801446996171641e4d8f2c3_7b25e8516d06421ab02266e54ca5384c.JPG", "caption": "新版《梁祝》选段", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/politics/20260111/ebb4525cdb8c463a8ac4a96d5895e435/20260111ebb4525cdb8c463a8ac4a96d5895e435_bf827df44d5f42da8d7381d8edadeba5.JPG", "caption": "戏曲舞台群像", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/politics/20260111/ebb4525cdb8c463a8ac4a96d5895e435/20260111ebb4525cdb8c463a8ac4a96d5895e435_e5698a0206f34b41a17fae3614de2893.JPG", "caption": "梁山伯舞台形象", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/ent/20250519/4fba9d61bac64ba78513c0aca187f1fa/202505194fba9d61bac64ba78513c0aca187f1fa_20250519fc9b96b637674852bf7aaf080a9df070.jpeg", "caption": "《我的大观园》群像", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/ent/20260330/bf262f7f41b54eae96050b07a898da73/20260330bf262f7f41b54eae96050b07a898da73_20260330397d991d969c409db22c2c05619d213c.jpg", "caption": "话剧《枕头人》造型", "source": "新华网 / 新华社公开报道"}, {"url": "https://www.news.cn/local/20240814/ae932498ec0947358de3b92429544868/20240814ae932498ec0947358de3b92429544868_20240814f35b0cbdb51a4961804b549314bfc236.jpg", "caption": "新国风舞台瞬间", "source": "新华网 / 新华社公开报道"}];
 
 function renderRemoteGallery(){
@@ -292,7 +292,7 @@ function openGallery(index){
 renderRemoteGallery();
 
 
-// ===== 中国主流平台互动观察 1.2.0 =====
+// ===== 中国主流平台互动观察 1.3.0 =====
 const socialFallback = {"updatedAt": "2026-08-05 20:00", "version": "1.2.0", "actor": "陈丽君", "platforms": [{"name": "微博", "title": "超话与舞台话题", "desc": "角色讨论、舞台动态与粉丝互动内容更新密集。", "url": "https://s.weibo.com/weibo?q=%23%E9%99%88%E4%B8%BD%E5%90%9B%23", "type": "话题"}, {"name": "抖音", "title": "短视频与直播切片", "desc": "适合发现唱段、身段、直播片段与戏迷二创。", "url": "https://www.douyin.com/search/%E9%99%88%E4%B8%BD%E5%90%9B", "type": "视频"}, {"name": "今日头条", "title": "媒体报道与用户讨论", "desc": "聚合人物报道、演出资讯及评论区观点。", "url": "https://so.toutiao.com/search?keyword=%E9%99%88%E4%B8%BD%E5%90%9B", "type": "资讯"}, {"name": "百度", "title": "全网热点检索", "desc": "快速查看近期报道、百科资料与平台聚合结果。", "url": "https://www.baidu.com/s?wd=%E9%99%88%E4%B8%BD%E5%90%9B", "type": "综合"}, {"name": "百度贴吧", "title": "长帖与戏迷交流", "desc": "适合浏览长篇观后感、作品讨论和资料整理。", "url": "https://tieba.baidu.com/f/search/res?ie=utf-8&qw=%E9%99%88%E4%B8%BD%E5%90%9B", "type": "论坛"}, {"name": "哔哩哔哩", "title": "长视频与唱段合集", "desc": "适合观看舞台混剪、尹派赏析和越剧科普。", "url": "https://search.bilibili.com/all?keyword=%E9%99%88%E4%B8%BD%E5%90%9B", "type": "视频"}], "signals": [{"title": "《我的大观园》舞台回声", "desc": "围绕贾宝玉塑造、唱腔表达、舞美与巡演反馈的集中讨论。", "tag": "演出讨论", "platforms": ["微博", "抖音", "今日头条"]}, {"title": "贾廷角色与出圈片段", "desc": "环境式越剧互动、人物气场与经典片段仍是高频内容。", "tag": "角色热点", "platforms": ["微博", "抖音", "哔哩哔哩"]}, {"title": "尹派小生身段赏析", "desc": "从扇子功、眼神、台步和唱腔切入的专业向内容。", "tag": "艺术赏析", "platforms": ["哔哩哔哩", "百度贴吧", "微博"]}, {"title": "演出信息与票务提醒", "desc": "围绕公开演出日程、场馆信息和观演提示的实用讨论。", "tag": "实用信息", "platforms": ["今日头条", "百度", "微博"]}], "methodNote": "讨论方向由公开页面人工核验后整理；不抓取私人评论，不展示无法核验的实时排名。"};
 let socialPayload = socialFallback;
 let socialFilterValue = '全部';
@@ -345,3 +345,60 @@ async function loadSocialHub(announce = false) {
 }
 document.querySelector('#socialRefreshBtn')?.addEventListener('click', () => loadSocialHub(true));
 renderSocialHub(); loadSocialHub(false);
+
+// ===== 每日丽君情报站 1.4.0 =====
+const intelFallback={updatedAt:'2026-08-06T03:00:00+08:00',checkedAt:'2026-08-06T03:00:00+08:00',version:'2.0.0',checks:[],items:[]};
+const intelSources=[
+ ['浙江小百花','院团与演出','https://www.baidu.com/s?wd='+encodeURIComponent('浙江小百花越剧院 陈丽君')],
+ ['新华网','权威新闻','https://www.baidu.com/s?wd='+encodeURIComponent('site:news.cn 陈丽君')],
+ ['中国新闻网','文化资讯','https://www.baidu.com/s?wd='+encodeURIComponent('site:chinanews.com.cn 陈丽君')],
+ ['潮新闻','浙江本地','https://www.baidu.com/s?wd='+encodeURIComponent('site:tidenews.com.cn 陈丽君')],
+ ['新浪微博','本人/话题','https://s.weibo.com/weibo?q='+encodeURIComponent('陈丽君')],
+ ['抖音','短视频动态','https://www.douyin.com/search/'+encodeURIComponent('陈丽君')],
+ ['哔哩哔哩','舞台视频','https://search.bilibili.com/all?keyword='+encodeURIComponent('陈丽君')],
+ ['百度','全网聚合','https://www.baidu.com/s?wd='+encodeURIComponent('陈丽君 最新')]
+];
+let intelPayload=intelFallback,intelFilter='全部',intelQuery='';
+function intelDateValue(x){const t=new Date(x.date||0).getTime();return Number.isFinite(t)?t:0;}
+function intelFreshCount(items){const now=Date.now();return items.filter(x=>now-intelDateValue(x)<=7*86400000&&now>=intelDateValue(x)).length;}
+const intelLayers=['官方与本人','权威媒体','演出与节目','视频平台','戏迷社区'];
+function buildDailyBrief(items){
+ const sorted=[...items].sort((a,b)=>intelDateValue(b)-intelDateValue(a));
+ const fresh=sorted.filter(x=>Date.now()-intelDateValue(x)<=7*86400000&&Date.now()>=intelDateValue(x));
+ const sourceCount=new Set(sorted.map(x=>x.source).filter(Boolean)).size;
+ const cats=[...new Set(fresh.map(x=>x.category).filter(Boolean))];
+ const top=fresh.slice(0,3);
+ $('#briefDate').textContent=new Date(intelPayload.checkedAt||Date.now()).toLocaleDateString('zh-CN',{month:'long',day:'numeric'});
+ $('#briefLead').textContent=fresh.length?`近7日发现 ${fresh.length} 条新增公开线索，覆盖 ${sourceCount} 个来源。${cats.length?`重点集中在${cats.slice(0,3).join('、')}。`:''}`:`今日已完成巡检，暂未发现近7日新增公开事件；系统将继续保留既有重要资料并进行下一轮检查。`;
+ $('#briefHighlights').innerHTML=top.map((x,i)=>`<article><span>0${i+1}</span><div><b>${escapeHTML(x.title)}</b><em>${escapeHTML(x.source||'公开来源')} · ${escapeHTML(x.date||'时间待核验')}</em></div></article>`).join('')||'<div class="empty-state">暂无新的重点条目。</div>';
+ $('#briefWatch').textContent=top[0]?.title||'关注官方演出公告、采访与节目更新';
+}
+function renderSourceHealth(){
+ const checks=Array.isArray(intelPayload.checks)?intelPayload.checks:[];
+ $('#sourceHealthGrid').innerHTML=intelLayers.map(layer=>{const rows=checks.filter(x=>x.layer===layer);const ok=rows.some(x=>x.ok);const count=rows.reduce((n,x)=>n+(x.count||0),0);return `<div class="source-health-card ${ok?'ok':'idle'}"><i></i><div><b>${layer}</b><span>${rows.length?(ok?`已连接 · ${count} 条线索`:'本轮未连接'):'等待实时接口诊断'}</span></div></div>`}).join('');
+}
+function renderIntel(){
+ const items=Array.isArray(intelPayload.items)?intelPayload.items:[];
+ const cats=['全部',...new Set(items.map(x=>x.category||'其他'))];
+ $('#intelFilters').innerHTML=cats.map(c=>`<button type="button" class="${c===intelFilter?'active':''}" data-intel-filter="${escapeHTML(c)}">${escapeHTML(c)}</button>`).join('');
+ $$('[data-intel-filter]', $('#intelFilters')).forEach(b=>b.addEventListener('click',()=>{intelFilter=b.dataset.intelFilter;renderIntel();}));
+ const q=intelQuery.trim().toLowerCase();
+ const visible=items.filter(x=>(intelFilter==='全部'||(x.category||'其他')===intelFilter)&&(!q||`${x.title} ${x.desc} ${x.source}`.toLowerCase().includes(q)));
+ $('#intelList').innerHTML=visible.map((x,i)=>`<article class="intel-card"><div class="intel-rank">${String(i+1).padStart(2,'0')}</div><div class="intel-body"><div class="intel-meta"><time>${escapeHTML(x.date||'时间待核验')}</time><span class="tier tier-${escapeHTML((x.tier||'B').toLowerCase())}">${x.tier==='A'?'权威/一手':'公开线索'}</span><i>${escapeHTML(x.category||'动态')}</i></div><h3>${escapeHTML(x.title)}</h3><p>${escapeHTML(x.desc||'')}</p><div class="intel-actions"><a href="${safeExternalUrl(x.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(x.source||'公开来源')} · 阅读原文 →</a><button type="button" data-intel-save="${i}">${localStorage.getItem('intel-save-'+x.title)==='1'?'♥ 已收藏':'♡ 收藏'}</button></div></div></article>`).join('')||'<div class="empty-state">没有符合当前条件的线索。</div>';
+ $$('[data-intel-save]', $('#intelList')).forEach(b=>b.addEventListener('click',()=>{const x=visible[Number(b.dataset.intelSave)];if(!x)return;const k='intel-save-'+x.title,on=localStorage.getItem(k)!=='1';localStorage.setItem(k,on?'1':'0');b.textContent=on?'♥ 已收藏':'♡ 收藏';showToast(on?'已收藏该线索':'已取消收藏');}));
+ $('#intelCount').textContent=items.length;$('#intelSources').textContent=new Set(items.map(x=>x.source).filter(Boolean)).size;$('#intelNew').textContent=intelFreshCount(items);$('#intelChecked').textContent=intelPayload.checkedAt?new Date(intelPayload.checkedAt).toLocaleDateString('zh-CN',{month:'2-digit',day:'2-digit'}):'--';buildDailyBrief(items);renderSourceHealth();
+ $('#sourceRadar').innerHTML=intelSources.map(x=>`<a href="${x[2]}" target="_blank" rel="noopener noreferrer"><b>${x[0]}</b><span>${x[1]}</span><em>打开 ↗</em></a>`).join('');
+}
+async function loadIntel(announce=false){
+ const btn=$('#intelRefreshBtn');btn.disabled=true;$('#intelStatus').textContent='正在从同源实时接口、每日资料包和本机缓存依次检查…';
+ let data=null,mode='';
+ try{const r=await fetch(`./api/news?v=${Date.now()}`,{cache:'no-store',headers:{Accept:'application/json'}});if(!r.ok)throw new Error();const d=await r.json();if(!d.items?.length)throw new Error();data=d;mode='实时聚合';}catch{}
+ if(!data){try{const r=await fetch(`./data/daily.json?v=${Date.now()}`,{cache:'no-store',headers:{Accept:'application/json'}});if(!r.ok)throw new Error();const d=await r.json();if(!d.items?.length)throw new Error();data=d;mode='每日资料包';}catch{}}
+ if(!data){try{const d=JSON.parse(localStorage.getItem('intel-cache')||'null');if(d?.items?.length){data=d;mode='本机缓存';}}catch{}}
+ if(!data){data=intelFallback;mode='基础资料';}
+ intelPayload=data;localStorage.setItem('intel-cache',JSON.stringify(data));renderIntel();$('#intelStatus').innerHTML=`已载入 <b>${escapeHTML(mode)}</b> · 最近检查 ${escapeHTML(formatTime(data.checkedAt||data.updatedAt))}`;btn.disabled=false;if(announce)showToast(`情报站已刷新：${mode}`);
+}
+$('#intelRefreshBtn')?.addEventListener('click',()=>loadIntel(true));
+$('#diagnoseBtn')?.addEventListener('click',async()=>{showToast('正在运行五层信息源诊断…');await loadIntel(false);renderSourceHealth();showToast('信息源诊断完成');});
+$('#intelSearch')?.addEventListener('input',e=>{intelQuery=e.target.value;renderIntel();});
+renderIntel();loadIntel(false);
